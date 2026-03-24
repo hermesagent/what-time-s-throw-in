@@ -1,0 +1,162 @@
+{
+  "artifact_type": "prd",
+  "version": "1.0",
+  "title": "What Time's Throw In? \u2013 Irish Sports TV Schedule Tool",
+  "overview": "A single-page, self-contained HTML/CSS/JS web tool that displays upcoming Irish sports fixture start times and their broadcast channels (TV or streaming service). The tool targets Ireland's most popular sports\u2014rugby, soccer, GAA (hurling & football), golf, and horse racing\u2014with a focus on weekend fixtures as the primary viewing window. All data is embedded as static sample fixtures with no server-side dependencies, external databases, or authentication. The page must be responsive, work on desktop and mobile, and include clear on-page usage instructions.",
+  "objectives": [
+    "Provide a single, easy-to-use page showing upcoming Irish sports fixtures with start times and broadcast channels",
+    "Cover the five core Irish-interest sports: rugby, soccer, GAA (hurling & football), golf, and horse racing",
+    "Highlight weekend (Saturday & Sunday) fixtures as the primary viewing window",
+    "Deliver a fully self-contained static HTML file with inline CSS and JS, zero external dependencies",
+    "Ensure responsive design for both desktop and mobile devices",
+    "Include clear on-page usage instructions so first-time visitors can immediately understand the tool"
+  ],
+  "user_stories": [
+    {
+      "id": "US-01",
+      "as_a": "sports fan in Ireland",
+      "i_want": "to see a list of upcoming sports fixtures with start times and TV channels",
+      "so_that": "I can quickly find out when and where to watch my favourite sports",
+      "acceptance_criteria": [
+        "Each fixture entry displays: sport type, event/match name, date/time, and TV channel or streaming service",
+        "All times are displayed in Irish Standard Time (IST/GMT)",
+        "At least one sample fixture exists for each of the five core sports"
+      ],
+      "priority": "must"
+    },
+    {
+      "id": "US-02",
+      "as_a": "sports fan",
+      "i_want": "to filter fixtures by sport type",
+      "so_that": "I can focus on the sports I care about most",
+      "acceptance_criteria": [
+        "Filter controls are visible on the page for each of the five sports categories",
+        "Selecting a sport filter shows only fixtures for that sport",
+        "A way to clear filters and show all fixtures is available",
+        "Filters work entirely client-side with no page reload"
+      ],
+      "priority": "must"
+    },
+    {
+      "id": "US-03",
+      "as_a": "weekend viewer",
+      "i_want": "weekend fixtures to be prominently displayed or default-filtered",
+      "so_that": "I can immediately see what's on this Saturday and Sunday without extra clicks",
+      "acceptance_criteria": [
+        "Weekend (Saturday and Sunday) fixtures are displayed by default or prominently highlighted",
+        "A toggle or filter allows showing weekday fixtures as well",
+        "Weekend fixtures are visually distinguishable from weekday fixtures"
+      ],
+      "priority": "must"
+    },
+    {
+      "id": "US-04",
+      "as_a": "mobile user",
+      "i_want": "the page to be responsive and usable on my phone",
+      "so_that": "I can check fixtures on the go",
+      "acceptance_criteria": [
+        "The layout adapts to screen widths from 320px to 1920px+",
+        "All interactive elements (filters, buttons) are touch-friendly (minimum 44px tap target)",
+        "Text is readable without horizontal scrolling on mobile devices",
+        "No content is clipped or hidden on small screens"
+      ],
+      "priority": "must"
+    },
+    {
+      "id": "US-05",
+      "as_a": "first-time visitor",
+      "i_want": "to see clear usage instructions on the page",
+      "so_that": "I understand how to use the tool without any external documentation",
+      "acceptance_criteria": [
+        "Usage instructions are visible on the page without requiring user action",
+        "Instructions explain how to filter by sport and view weekend fixtures",
+        "Instructions are concise and do not dominate the page layout"
+      ],
+      "priority": "must"
+    },
+    {
+      "id": "US-06",
+      "as_a": "site operator",
+      "i_want": "the tool to be a single self-contained HTML file with no external dependencies",
+      "so_that": "I can deploy it by simply placing the file at a URL path on any static host",
+      "acceptance_criteria": [
+        "The entire tool is contained in one .html file",
+        "All CSS is inline or in a <style> block within the file",
+        "All JavaScript is inline or in a <script> block within the file",
+        "No external CDN links, fonts, stylesheets, or script references",
+        "The file opens correctly when loaded directly in Chrome, Firefox, Safari, and Edge"
+      ],
+      "priority": "must"
+    },
+    {
+      "id": "US-07",
+      "as_a": "sports fan",
+      "i_want": "to see which TV channel or streaming service is broadcasting each event",
+      "so_that": "I know where to tune in or which app to open",
+      "acceptance_criteria": [
+        "Each fixture clearly displays the broadcast channel or streaming service name",
+        "Channel names include relevant Irish broadcasters (e.g., RT\u00c9, TG4, Virgin Media, Sky Sports, TNT Sports, Premier Sports, GAAGO, Racing TV)",
+        "The channel information is visually prominent within each fixture entry"
+      ],
+      "priority": "must"
+    },
+    {
+      "id": "US-08",
+      "as_a": "sports fan",
+      "i_want": "to filter or sort fixtures by date",
+      "so_that": "I can plan my viewing for a specific day",
+      "acceptance_criteria": [
+        "Fixtures can be viewed grouped or sorted by date",
+        "The current or next upcoming date is highlighted or prioritised"
+      ],
+      "priority": "should"
+    }
+  ],
+  "constraints": [
+    "Must be a single self-contained HTML file with inline CSS and JS\u2014no external dependencies of any kind",
+    "No external database, authentication, or server-side runtime required",
+    "Data is embedded/static\u2014no live API integrations in v1.0",
+    "Must function as a static file served at a path URL",
+    "Target modern browsers only: latest versions of Chrome, Firefox, Safari, and Edge",
+    "Agent budget capped at $0.75 USD; delivery timeout of 600 seconds",
+    "All displayed times in Irish Standard Time (IST/GMT)"
+  ],
+  "assumptions": [
+    {
+      "assumption": "The scope of 'top sports' is limited to five categories",
+      "default": "Rugby, soccer, GAA (hurling & football), golf, and horse racing",
+      "evidence_tier": "directive-stated"
+    },
+    {
+      "assumption": "No user accounts or personalisation features are needed",
+      "default": "All visitors see the same schedule view with client-side filtering only",
+      "evidence_tier": "inferred"
+    },
+    {
+      "assumption": "Weekend is defined as Saturday and Sunday",
+      "default": "Fixtures shown default-filter to Saturday and Sunday",
+      "evidence_tier": "inferred"
+    },
+    {
+      "assumption": "Live data feeds or API integrations are not required for v1.0",
+      "default": "Sport schedule data will be hardcoded as sample/representative fixtures within the HTML file",
+      "evidence_tier": "directive-stated"
+    },
+    {
+      "assumption": "The tool targets modern browsers only, not legacy",
+      "default": "Latest versions of Chrome, Firefox, Safari, and Edge",
+      "evidence_tier": "inferred"
+    },
+    {
+      "assumption": "Time zone for all displayed times is Irish Standard Time",
+      "default": "All times displayed in IST/GMT",
+      "evidence_tier": "inferred"
+    },
+    {
+      "assumption": "Sample fixture data should represent realistic upcoming Irish sports events",
+      "default": "Use representative fixture names, realistic kick-off times, and actual Irish broadcaster names",
+      "evidence_tier": "inferred"
+    }
+  ],
+  "open_questions": []
+}

@@ -1,0 +1,110 @@
+
+============================================================
+  ACCEPTANCE CRITERIA VALIDATION RESULTS
+============================================================
+
+  ✅ [PASS] C1: Starts with <!DOCTYPE html>
+  ✅ [PASS] C1: <html> tag has lang attribute
+  ✅ [PASS] C1: Contains <head> section
+  ✅ [PASS] C1: Contains <body> section
+  ✅ [PASS] C1: Ends with closing </html> tag
+  ✅ [PASS] C1: Has UTF-8 charset meta
+  ✅ [PASS] C1: Has a non-empty <title> tag
+  ✅ [PASS] C2: Fixture data contains at least one "rugby" entry
+  ✅ [PASS] C2: Fixture data contains ≥2 "rugby" entries for variety
+  ✅ [PASS] C2: Fixture data contains at least one "soccer" entry
+  ✅ [PASS] C2: Fixture data contains ≥2 "soccer" entries for variety
+  ✅ [PASS] C2: Fixture data contains at least one "gaa" entry
+  ✅ [PASS] C2: Fixture data contains ≥2 "gaa" entries for variety
+  ✅ [PASS] C2: Fixture data contains at least one "golf" entry
+  ✅ [PASS] C2: Fixture data contains ≥2 "golf" entries for variety
+  ✅ [PASS] C2: Fixture data contains at least one "racing" entry
+  ✅ [PASS] C2: Fixture data contains ≥2 "racing" entries for variety
+  ✅ [PASS] C2: Filter pill exists for sport "rugby"
+  ✅ [PASS] C2: Filter pill exists for sport "soccer"
+  ✅ [PASS] C2: Filter pill exists for sport "gaa"
+  ✅ [PASS] C2: Filter pill exists for sport "golf"
+  ✅ [PASS] C2: Filter pill exists for sport "racing"
+  ✅ [PASS] C2: "All Sports" filter pill exists
+  ✅ [PASS] C3: Fixture data array found in script
+  ✅ [PASS] C3: At least 10 fixtures defined (found 18)
+  ✅ [PASS] C3: Every fixture has a "sport" field
+  ✅ [PASS] C3: Every fixture has a "name" (event) field
+  ✅ [PASS] C3: Every fixture has a "date" field
+  ✅ [PASS] C3: Every fixture has a "time" field in HH:MM format
+  ✅ [PASS] C3: Every fixture has a "channel" field
+  ✅ [PASS] C3: Every fixture has a "day" field
+  ✅ [PASS] C3: Render includes sport tag class
+  ✅ [PASS] C3: Render includes fixture-time class
+  ✅ [PASS] C3: Render includes fixture-name class
+  ✅ [PASS] C3: Render includes channel-badge class
+  ✅ [PASS] C4: Weekend toggle button exists
+  ✅ [PASS] C4: "Weekend Only" label visible
+  ✅ [PASS] C4: Weekend filter is ON by default
+  ✅ [PASS] C4: Weekend fixtures get "weekend-highlight" CSS class
+  ✅ [PASS] C4: Weekend badge CSS class defined
+  ✅ [PASS] C4: Weekend highlight has distinct styling
+  ✅ [PASS] C4: isWeekend helper function defined
+  ✅ [PASS] C4: Saturday day filter pill exists
+  ✅ [PASS] C4: Sunday day filter pill exists
+  ✅ [PASS] C4: At least 3 Saturday fixtures (found 7)
+  ✅ [PASS] C4: At least 3 Sunday fixtures (found 7)
+  ✅ [PASS] C5: Viewport meta tag for responsive design
+  ✅ [PASS] C5: Desktop media query breakpoint exists (≥700px)
+  ✅ [PASS] C5: Large desktop media query breakpoint exists (≥1024px)
+  ✅ [PASS] C5: Small mobile media query breakpoint exists (≤374px)
+  ✅ [PASS] C5: Body has min-width: 320px for smallest phones
+  ✅ [PASS] C5: Mobile default is single-column grid
+  ✅ [PASS] C5: Desktop uses two-column grid
+  ✅ [PASS] C5: Touch targets meet 44px minimum height
+  ✅ [PASS] C5: Filter pills wrap on small screens
+  ✅ [PASS] C6: Instructions section exists with "instructions" class
+  ✅ [PASS] C6: Instructions contain "How to use" text
+  ✅ [PASS] C6: Instructions have ARIA role="note"
+  ✅ [PASS] C6: Instructions mention sport buttons
+  ✅ [PASS] C6: Instructions mention Weekend Only toggle
+  ✅ [PASS] C6: Instructions mention channel badge
+  ✅ [PASS] C6: Instructions mention time
+  ✅ [PASS] C6: Instructions are not hidden with display:none
+  ✅ [PASS] C6: Instructions are not hidden with visibility:hidden
+  ✅ [PASS] C7: No external stylesheet <link> tags (found 0)
+  ✅ [PASS] C7: No external <script src="..."> tags (found 0)
+  ✅ [PASS] C7: No fetch() API calls
+  ✅ [PASS] C7: No XMLHttpRequest usage
+  ✅ [PASS] C7: No ES module imports
+  ✅ [PASS] C7: No require() calls in inline script
+  ✅ [PASS] C7: No external HTTP(S) URLs (found 0: )
+  ✅ [PASS] C7: No CSS @import statements
+  ✅ [PASS] C8: Inline <style> block present
+  ✅ [PASS] C8: Inline </style> closing tag present
+  ✅ [PASS] C8: Inline <script> block present (no src attribute)
+  ✅ [PASS] C8: Inline </script> closing tag present
+  ✅ [PASS] C8: Exactly one HTML file in src/ directory (found 1: index.html)
+  ✅ [PASS] C8: No separate CSS files (found 0)
+  ✅ [PASS] C8: No separate JS files in src/ root (found 0)
+  ✅ [PASS] BONUS: Filter summary has aria-live="polite" for accessibility
+  ✅ [PASS] BONUS: Live announcements region for screen readers
+  ✅ [PASS] BONUS: Filter buttons use aria-pressed for state
+  ✅ [PASS] BONUS: Filter nav has role="toolbar"
+  ✅ [PASS] BONUS: Sport "rugby" has colour-coded CSS class
+  ✅ [PASS] BONUS: Sport "rugby" has tag styling class
+  ✅ [PASS] BONUS: Sport "soccer" has colour-coded CSS class
+  ✅ [PASS] BONUS: Sport "soccer" has tag styling class
+  ✅ [PASS] BONUS: Sport "gaa" has colour-coded CSS class
+  ✅ [PASS] BONUS: Sport "gaa" has tag styling class
+  ✅ [PASS] BONUS: Sport "golf" has colour-coded CSS class
+  ✅ [PASS] BONUS: Sport "golf" has tag styling class
+  ✅ [PASS] BONUS: Sport "racing" has colour-coded CSS class
+  ✅ [PASS] BONUS: Sport "racing" has tag styling class
+  ✅ [PASS] BONUS: Irish channel "TG4" appears in fixture data
+  ✅ [PASS] BONUS: Irish channel "GAAGO" appears in fixture data
+  ✅ [PASS] BONUS: Irish channel "Racing TV" appears in fixture data
+  ✅ [PASS] BONUS: Irish channel "Sky Sports" appears in fixture data
+  ✅ [PASS] BONUS: Irish channel "RTÉ" appears in fixture data
+
+------------------------------------------------------------
+  TOTAL: 98 tests | ✅ 98 passed | ❌ 0 failed
+------------------------------------------------------------
+
+  🎉 ALL TESTS PASSED — file meets all acceptance criteria!
+

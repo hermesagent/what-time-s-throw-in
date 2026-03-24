@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Time's Throw In? – Irish Sports TV Schedule</title>
+<style>
+/* ===== CSS Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #f0f4f0;
+  color: #1a1a1a;
+  line-height: 1.5;
+  min-width: 320px;
+}
+
+/* ===== Header ===== */
+.site-header {
+  background: linear-gradient(135deg, #006847 0%, #009a63 50%, #006847 100%);
+  color: #fff;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.site-header h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.site-header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-top: 0.25rem;
+  font-weight: 400;
+}
+.shamrock { display: inline-block; margin: 0 0.3rem; }
+
+/* ===== Instructions Banner ===== */
+.instructions {
+  background: #e8f5e9;
+  border-left: 4px solid #009a63;
+  padding: 0.75rem 1rem;
+  margin: 1rem;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.88rem;
+  color: #2e4a2e;
+  line-height: 1.5;
+}
+.instructions strong { color: #006847; }
+
+/* ===== Container ===== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+}
+
+/* ===== Filters Section ===== */
+.filters-section {
+  margin: 1rem 0;
+  position: sticky;
+  top: 0;
+  background: #f0f4f0;
+  z-index: 100;
+  padding: 0.6rem 0 0.75rem;
+  border-bottom: 1px solid #d0ddd0;
+}
+.filter-group {
+  margin-bottom: 0.65rem;
+}
+.filter-group:last-child { margin-bottom: 0; }
+.filter-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #666;
+  margin-bottom: 0.35rem;
+}
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+/* ===== Filter Pill Buttons ===== */
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 0.85rem;
+  border: 2px solid #b0c9b0;
+  border-radius: 999px;
+  background: #fff;
+  color: #333;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 44px;
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.filter-pill:hover {
+  border-color: #009a63;
+  background: #f0faf0;
+}
+.filter-pill:focus-visible {
+  outline: 3px solid #009a63;
+  outline-offset: 2px;
+}
+/* Default active state */
+.filter-pill[aria-pressed="true"] {
+  background: #009a63;
+  border-color: #009a63;
+  color: #fff;
+}
+.filter-pill .pill-icon { font-size: 1rem; }
+
+/* Sport-specific active colours */
+.filter-pill[data-sport="rugby"][aria-pressed="true"] {
+  background: #006847;
+  border-color: #006847;
+  color: #fff;
+}
+.filter-pill[data-sport="soccer"][aria-pressed="true"] {
+  background: #1565c0;
+  border-color: #1565c0;
+  color: #fff;
+}
+.filter-pill[data-sport="gaa"][aria-pressed="true"] {
+  background: #ff8f00;
+  border-color: #ff8f00;
+  color: #fff;
+}
+.filter-pill[data-sport="golf"][aria-pressed="true"] {
+  background: #2e7d32;
+  border-color: #2e7d32;
+  color: #fff;
+}
+.filter-pill[data-sport="racing"][aria-pressed="true"] {
+  background: #6a1b9a;
+  border-color: #6a1b9a;
+  color: #fff;
+}
+
+/* ===== Weekend Toggle ===== */
+.weekend-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #e67e22;
+  border-radius: 999px;
+  background: #fff;
+  color: #c05600;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 44px;
+  font-family: inherit;
+  white-space: nowrap;
+  margin-left: 0.25rem;
+}
+.weekend-toggle-btn:hover {
+  background: #fef3e6;
+}
+.weekend-toggle-btn:focus-visible {
+  outline: 3px solid #e67e22;
+  outline-offset: 2px;
+}
+.weekend-toggle-btn[aria-pressed="true"] {
+  background: #e67e22;
+  border-color: #e67e22;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(230,126,34,0.3);
+}
+.weekend-toggle-btn .toggle-indicator {
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: #ccc;
+  position: relative;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+.weekend-toggle-btn .toggle-indicator::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.weekend-toggle-btn[aria-pressed="true"] .toggle-indicator {
+  background: rgba(255,255,255,0.4);
+}
+.weekend-toggle-btn[aria-pressed="true"] .toggle-indicator::after {
+  transform: translateX(16px);
+}
+
+/* ===== Filter Separator ===== */
+.filter-separator {
+  width: 1px;
+  height: 28px;
+  background: #c8d8c8;
+  margin: 0 0.25rem;
+  align-self: center;
+}
+
+/* ===== Day Group Headers ===== */
+.day-header {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #006847;
+  padding: 0.75rem 0 0.4rem;
+  margin-top: 1rem;
+  border-bottom: 2px solid #c8e0c8;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.day-header .day-icon { font-size: 1.1rem; }
+.weekend-badge {
+  display: inline-block;
+  background: #ff8f00;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+/* ===== Active Filter Summary ===== */
+.filter-summary {
+  font-size: 0.82rem;
+  color: #666;
+  padding: 0.5rem 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.filter-summary .count {
+  font-weight: 700;
+  color: #006847;
+}
+
+/* ===== Fixture Cards ===== */
+.fixtures-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin-top: 0.6rem;
+}
+.fixture-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  border: 1px solid #dde8dd;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.fixture-card:hover {
+  box-shadow: 0 4px 12px rgba(0,100,71,0.12);
+  transform: translateY(-1px);
+}
+.fixture-card.weekend-highlight {
+  border-color: #f5d89a;
+  background: #fffdf5;
+}
+.card-sport-stripe {
+  width: 6px;
+  flex-shrink: 0;
+}
+.sport-rugby { background: #006847; }
+.sport-soccer { background: #1565c0; }
+.sport-gaa { background: #ff8f00; }
+.sport-golf { background: #2e7d32; }
+.sport-racing { background: #6a1b9a; }
+
+.card-body {
+  flex: 1;
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.sport-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.tag-rugby { background: #e0f2e0; color: #006847; }
+.tag-soccer { background: #e3f2fd; color: #1565c0; }
+.tag-gaa { background: #fff3e0; color: #e65100; }
+.tag-golf { background: #e8f5e9; color: #2e7d32; }
+.tag-racing { background: #f3e5f5; color: #6a1b9a; }
+
+.fixture-time {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #555;
+  white-space: nowrap;
+}
+.fixture-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+.card-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.15rem;
+}
+.channel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: linear-gradient(135deg, #006847, #009a63);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0,100,71,0.2);
+}
+.channel-badge .ch-icon { font-size: 0.95rem; }
+.fixture-meta {
+  font-size: 0.78rem;
+  color: #777;
+}
+
+/* ===== No Results ===== */
+.no-results {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #777;
+  font-size: 1rem;
+}
+.no-results .nr-icon { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+
+/* ===== Footer ===== */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.78rem;
+  color: #888;
+  border-top: 1px solid #dde8dd;
+  margin-top: 1rem;
+}
+
+/* ===== Visually Hidden (Screen Readers) ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== Desktop: 2-column grid ===== */
+@media (min-width: 700px) {
+  .site-header h1 { font-size: 2rem; }
+  .site-header .subtitle { font-size: 1rem; }
+  .instructions { margin: 1rem auto; max-width: 1100px; }
+  .fixtures-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .filter-pill { padding: 0.45rem 1rem; font-size: 0.88rem; }
+}
+
+/* ===== Large Desktop: wider cards ===== */
+@media (min-width: 1024px) {
+  .site-header h1 { font-size: 2.2rem; }
+  .fixture-card { flex-direction: row; }
+  .card-body { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 0.6rem; }
+  .card-top-row { flex: 0 0 auto; gap: 0.75rem; }
+  .fixture-name { flex: 1 1 0; min-width: 200px; }
+  .card-bottom-row { flex: 0 0 auto; margin-top: 0; }
+}
+
+/* ===== Small mobile tweaks ===== */
+@media (max-width: 374px) {
+  .site-header h1 { font-size: 1.3rem; }
+  .filter-pill, .weekend-toggle-btn { padding: 0.4rem 0.6rem; font-size: 0.78rem; }
+  .fixture-name { font-size: 0.92rem; }
+  .channel-badge { font-size: 0.78rem; padding: 0.3rem 0.55rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1><span class="shamrock">&#9752;</span> What Time's Throw In? <span class="shamrock">&#9752;</span></h1>
+  <p class="subtitle">Irish Sports TV Schedule &amp; Broadcast Guide</p>
+</header>
+
+<div class="instructions" role="note" aria-label="Usage instructions">
+  <strong>How to use:</strong> Tap a <strong>sport button</strong> (Rugby, Soccer, GAA, Golf, Horse Racing) to filter by sport, or select "All Sports" to view everything. Use the <strong>Weekend Only</strong> toggle to show only Saturday &amp; Sunday fixtures, or pick a specific day. Each fixture card displays the sport, match name, kick-off time (Irish time), and a green <span style="display:inline-block;background:linear-gradient(135deg,#006847,#009a63);color:#fff;padding:0.1rem 0.4rem;border-radius:4px;font-weight:700;font-size:0.82rem;">&#128250; channel badge</span> showing where to watch.
+</div>
+
+<div class="container">
+  <!-- Filters -->
+  <nav class="filters-section" role="toolbar" aria-label="Fixture filters">
+    <div class="filter-group">
+      <span class="filter-label" id="sport-filter-label">Sport</span>
+      <div class="filter-pills" role="group" aria-labelledby="sport-filter-label" id="sportFilters">
+        <button class="filter-pill" data-sport="all" aria-pressed="true" type="button">
+          <span class="pill-icon">&#127936;</span> All Sports
+        </button>
+        <button class="filter-pill" data-sport="rugby" aria-pressed="false" type="button">
+          <span class="pill-icon">&#127945;</span> Rugby
+        </button>
+        <button class="filter-pill" data-sport="soccer" aria-pressed="false" type="button">
+          <span class="pill-icon">&#9917;</span> Soccer
+        </button>
+        <button class="filter-pill" data-sport="gaa" aria-pressed="false" type="button">
+          <span class="pill-icon">&#127941;</span> GAA
+        </button>
+        <button class="filter-pill" data-sport="golf" aria-pressed="false" type="button">
+          <span class="pill-icon">&#9971;</span> Golf
+        </button>
+        <button class="filter-pill" data-sport="racing" aria-pressed="false" type="button">
+          <span class="pill-icon">&#127943;</span> Horse Racing
+        </button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label" id="day-filter-label">Day</span>
+      <div class="filter-pills" role="group" aria-labelledby="day-filter-label" id="dayFilters">
+        <button class="filter-pill" data-day="all" aria-pressed="false" type="button">
+          <span class="pill-icon">&#128466;</span> All Days
+        </button>
+        <button class="filter-pill" data-day="saturday" aria-pressed="false" type="button">
+          <span class="pill-icon">&#128197;</span> Saturday
+        </button>
+        <button class="filter-pill" data-day="sunday" aria-pressed="false" type="button">
+          <span class="pill-icon">&#128197;</span> Sunday
+        </button>
+        <span class="filter-separator" aria-hidden="true"></span>
+        <button class="weekend-toggle-btn" id="weekendToggle" aria-pressed="true" type="button" aria-label="Toggle weekend fixtures only">
+          <span class="pill-icon">&#127775;</span> Weekend Only
+          <span class="toggle-indicator" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <div class="filter-summary" id="filterSummary" aria-live="polite"></div>
+  </nav>
+
+  <!-- Fixtures Container -->
+  <div id="fixturesContainer" role="region" aria-label="Fixture results"></div>
+</div>
+
+<footer class="site-footer">
+  &#9752; What Time's Throw In? &mdash; Sample fixture data for demonstration purposes.<br>
+  Last updated: 24 March 2026 &middot; No external dependencies. Works offline. &copy; 2026
+</footer>
+
+<!-- Screen reader live announcements -->
+<div id="liveAnnounce" class="sr-only" aria-live="assertive" role="status"></div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ===== Sample Fixture Data =====
+  var fixtures = [
+    // SATURDAY 28 March 2026
+    { sport: "rugby", name: "Ireland vs Wales \u2013 Six Nations", date: "2026-03-28", time: "14:15", day: "Saturday", channel: "RT\u00c9 2", channelNote: "Also on RT\u00c9 Player" },
+    { sport: "soccer", name: "Shamrock Rovers vs Dundalk \u2013 LOI Premier", date: "2026-03-28", time: "17:45", day: "Saturday", channel: "RT\u00c9 2", channelNote: "" },
+    { sport: "gaa", name: "Dublin vs Kerry \u2013 Allianz Football League", date: "2026-03-28", time: "19:00", day: "Saturday", channel: "TG4", channelNote: "Also on TG4 Player" },
+    { sport: "golf", name: "Irish Open \u2013 Round 3", date: "2026-03-28", time: "12:00", day: "Saturday", channel: "Sky Sports Golf", channelNote: "" },
+    { sport: "racing", name: "Curragh Spring Festival \u2013 Day 1", date: "2026-03-28", time: "13:30", day: "Saturday", channel: "Racing TV", channelNote: "Also on Virgin Media Two" },
+    { sport: "gaa", name: "Kilkenny vs Tipperary \u2013 Allianz Hurling League", date: "2026-03-28", time: "15:30", day: "Saturday", channel: "GAAGO", channelNote: "Streaming only" },
+    { sport: "soccer", name: "Liverpool vs Man City \u2013 Premier League", date: "2026-03-28", time: "12:30", day: "Saturday", channel: "Premier Sports 1", channelNote: "" },
+
+    // SUNDAY 29 March 2026
+    { sport: "rugby", name: "Leinster vs Munster \u2013 URC", date: "2026-03-29", time: "15:00", day: "Sunday", channel: "RT\u00c9 2", channelNote: "Also on RT\u00c9 Player" },
+    { sport: "soccer", name: "Republic of Ireland vs Scotland \u2013 Friendly", date: "2026-03-29", time: "17:00", day: "Sunday", channel: "RT\u00c9 2", channelNote: "Also on RT\u00c9 Player" },
+    { sport: "gaa", name: "Galway vs Limerick \u2013 Allianz Hurling League", date: "2026-03-29", time: "13:45", day: "Sunday", channel: "TG4", channelNote: "Also on TG4 Player" },
+    { sport: "gaa", name: "Mayo vs Donegal \u2013 Allianz Football League", date: "2026-03-29", time: "16:00", day: "Sunday", channel: "GAAGO", channelNote: "Streaming only" },
+    { sport: "golf", name: "Irish Open \u2013 Final Round", date: "2026-03-29", time: "11:00", day: "Sunday", channel: "Sky Sports Golf", channelNote: "" },
+    { sport: "racing", name: "Curragh Spring Festival \u2013 Day 2", date: "2026-03-29", time: "14:00", day: "Sunday", channel: "Racing TV", channelNote: "Also on Virgin Media Two" },
+    { sport: "rugby", name: "Connacht vs Ulster \u2013 URC", date: "2026-03-29", time: "19:35", day: "Sunday", channel: "TG4", channelNote: "" },
+
+    // FRIDAY 27 March 2026
+    { sport: "soccer", name: "Bohemians vs St Patrick\u2019s Ath \u2013 LOI Premier", date: "2026-03-27", time: "19:45", day: "Friday", channel: "LOITV", channelNote: "Streaming only" },
+    { sport: "racing", name: "Leopardstown Evening Meeting", date: "2026-03-27", time: "17:00", day: "Friday", channel: "Racing TV", channelNote: "" },
+
+    // MONDAY 30 March 2026
+    { sport: "rugby", name: "Munster vs Sharks \u2013 URC", date: "2026-03-30", time: "19:35", day: "Monday", channel: "TNT Sports", channelNote: "" },
+    { sport: "racing", name: "Fairyhouse Easter Meeting", date: "2026-03-30", time: "14:00", day: "Monday", channel: "Racing TV", channelNote: "" }
+  ];
+
+  // Sort by date then time
+  fixtures.sort(function(a, b) {
+    if (a.date !== b.date) return a.date < b.date ? -1 : 1;
+    return a.time < b.time ? -1 : a.time > b.time ? 1 : 0;
+  });
+
+  // ===== State =====
+  var activeSport = 'all';
+  var activeDay = 'none'; // 'none' means no day filter; weekend toggle controls instead
+  var weekendOnly = true;  // Default: weekend fixtures shown
+
+  // ===== Sport Metadata =====
+  var sportIcons = {
+    rugby: '&#127945;',
+    soccer: '&#9917;',
+    gaa: '&#127941;',
+    golf: '&#9971;',
+    racing: '&#127943;'
+  };
+
+  var sportLabels = {
+    rugby: 'Rugby',
+    soccer: 'Soccer',
+    gaa: 'GAA',
+    golf: 'Golf',
+    racing: 'Horse Racing'
+  };
+
+  // ===== Helpers =====
+  function isWeekend(day) {
+    return day === 'Saturday' || day === 'Sunday';
+  }
+
+  function formatTime(t) {
+    var parts = t.split(':');
+    var h = parseInt(parts[0], 10);
+    var m = parts[1];
+    var suffix = h >= 12 ? 'pm' : 'am';
+    var h12 = h % 12 || 12;
+    return h12 + ':' + m + ' ' + suffix;
+  }
+
+  function formatDate(dateStr) {
+    var d = new Date(dateStr + 'T00:00:00');
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    return d.getDate() + ' ' + months[d.getMonth()];
+  }
+
+  function announce(msg) {
+    var el = document.getElementById('liveAnnounce');
+    el.textContent = '';
+    setTimeout(function() { el.textContent = msg; }, 100);
+  }
+
+  // ===== Filter Logic =====
+  function filterFixtures() {
+    return fixtures.filter(function(f) {
+      // Sport filter
+      var sportMatch = activeSport === 'all' || f.sport === activeSport;
+
+      // Day/Weekend filter
+      var dayMatch;
+      if (weekendOnly) {
+        dayMatch = isWeekend(f.day);
+      } else if (activeDay === 'saturday') {
+        dayMatch = f.day === 'Saturday';
+      } else if (activeDay === 'sunday') {
+        dayMatch = f.day === 'Sunday';
+      } else {
+        dayMatch = true; // 'all' or 'none' — show everything
+      }
+
+      return sportMatch && dayMatch;
+    });
+  }
+
+  // ===== Render =====
+  function renderFixtures() {
+    var container = document.getElementById('fixturesContainer');
+    var filtered = filterFixtures();
+
+    // Update filter summary
+    updateFilterSummary(filtered.length);
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div class="no-results"><span class="nr-icon">&#128269;</span>No fixtures match your filters.<br>Try selecting <strong>All Sports</strong> or turning off <strong>Weekend Only</strong>.</div>';
+      announce('No fixtures match your current filters.');
+      return;
+    }
+
+    // Group by day
+    var groups = {};
+    var dayOrder = [];
+    filtered.forEach(function(f) {
+      var key = f.date + '|' + f.day;
+      if (!groups[key]) {
+        groups[key] = [];
+        dayOrder.push(key);
+      }
+      groups[key].push(f);
+    });
+
+    var html = '';
+    dayOrder.forEach(function(key) {
+      var parts = key.split('|');
+      var dayName = parts[1];
+      var dateStr = parts[0];
+      var wkend = isWeekend(dayName);
+
+      html += '<h2 class="day-header">';
+      html += '<span class="day-icon">' + (wkend ? '&#127775;' : '&#128197;') + '</span> ';
+      html += dayName + ', ' + formatDate(dateStr);
+      if (wkend) html += '<span class="weekend-badge">Weekend</span>';
+      html += '</h2>';
+
+      html += '<div class="fixtures-grid">';
+      groups[key].forEach(function(f) {
+        var wkendClass = isWeekend(f.day) ? ' weekend-highlight' : '';
+        html += '<article class="fixture-card' + wkendClass + '" data-sport="' + f.sport + '" tabindex="0">';
+        html += '<div class="card-sport-stripe sport-' + f.sport + '" aria-hidden="true"></div>';
+        html += '<div class="card-body">';
+
+        html += '<div class="card-top-row">';
+        html += '<span class="sport-tag tag-' + f.sport + '">' + sportIcons[f.sport] + ' ' + sportLabels[f.sport] + '</span>';
+        html += '<span class="fixture-time">&#128339; ' + formatTime(f.time) + ' IST</span>';
+        html += '</div>';
+
+        html += '<div class="fixture-name">' + f.name + '</div>';
+
+        html += '<div class="card-bottom-row">';
+        html += '<span class="channel-badge"><span class="ch-icon">&#128250;</span> ' + f.channel + '</span>';
+        if (f.channelNote) {
+          html += '<span class="fixture-meta">' + f.channelNote + '</span>';
+        }
+        html += '</div>';
+
+        html += '</div></article>';
+      });
+      html += '</div>';
+    });
+
+    container.innerHTML = html;
+    announce(filtered.length + ' fixture' + (filtered.length !== 1 ? 's' : '') + ' shown.');
+  }
+
+  function updateFilterSummary(count) {
+    var summary = document.getElementById('filterSummary');
+    var sportText = activeSport === 'all' ? 'All Sports' : sportLabels[activeSport] || activeSport;
+    var dayText;
+    if (weekendOnly) {
+      dayText = 'Weekend Only';
+    } else if (activeDay === 'saturday') {
+      dayText = 'Saturday';
+    } else if (activeDay === 'sunday') {
+      dayText = 'Sunday';
+    } else {
+      dayText = 'All Days';
+    }
+    summary.innerHTML = 'Showing <span class="count">' + count + '</span> fixture' + (count !== 1 ? 's' : '') + ' &middot; ' + sportText + ' &middot; ' + dayText;
+  }
+
+  // ===== Sport Filter Handler =====
+  function setSportFilter(sport) {
+    activeSport = sport;
+    var btns = document.querySelectorAll('#sportFilters .filter-pill');
+    btns.forEach(function(btn) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-sport') === sport ? 'true' : 'false');
+    });
+    renderFixtures();
+  }
+
+  // ===== Day Filter Handler =====
+  function setDayFilter(day) {
+    activeDay = day;
+    // Turn off weekend toggle when a specific day is selected
+    weekendOnly = false;
+    document.getElementById('weekendToggle').setAttribute('aria-pressed', 'false');
+    var btns = document.querySelectorAll('#dayFilters .filter-pill');
+    btns.forEach(function(btn) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-day') === day ? 'true' : 'false');
+    });
+    renderFixtures();
+  }
+
+  // ===== Weekend Toggle Handler =====
+  function toggleWeekendFilter() {
+    weekendOnly = !weekendOnly;
+    document.getElementById('weekendToggle').setAttribute('aria-pressed', weekendOnly ? 'true' : 'false');
+    if (weekendOnly) {
+      // Clear day filter selection
+      activeDay = 'none';
+      var btns = document.querySelectorAll('#dayFilters .filter-pill');
+      btns.forEach(function(btn) {
+        btn.setAttribute('aria-pressed', 'false');
+      });
+    } else {
+      // If turning off weekend, default to all days
+      activeDay = 'all';
+      var btns2 = document.querySelectorAll('#dayFilters .filter-pill');
+      btns2.forEach(function(btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-day') === 'all' ? 'true' : 'false');
+      });
+    }
+    renderFixtures();
+  }
+
+  // ===== Event Binding =====
+  function setupFilters() {
+    // Sport filter buttons
+    var sportBtns = document.querySelectorAll('#sportFilters .filter-pill');
+    sportBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setSportFilter(btn.getAttribute('data-sport'));
+      });
+    });
+
+    // Day filter buttons
+    var dayBtns = document.querySelectorAll('#dayFilters .filter-pill');
+    dayBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setDayFilter(btn.getAttribute('data-day'));
+      });
+    });
+
+    // Weekend toggle
+    document.getElementById('weekendToggle').addEventListener('click', function() {
+      toggleWeekendFilter();
+    });
+
+    // Keyboard support: Enter and Space on filter buttons (native button behavior, but ensuring consistency)
+    document.querySelectorAll('.filter-pill, .weekend-toggle-btn').forEach(function(btn) {
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+  }
+
+  // ===== Init =====
+  setupFilters();
+  renderFixtures();
+})();
+</script>
+</body>
+</html>

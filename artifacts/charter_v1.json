@@ -1,0 +1,82 @@
+{
+  "artifact_type": "charter",
+  "version": "1.0",
+  "title": "What Time's Throw In? \u2013 Irish Sports TV Schedule Web Tool",
+  "vision": "Provide Irish sports fans with a single, easy-to-use web page that consolidates weekend start times and TV channel/streaming information for all major sports, eliminating the need to check multiple sources.",
+  "objectives": [
+    "Build a single-page, self-contained HTML/CSS/JS web tool that displays upcoming sports start times and their broadcast channels",
+    "Cover the top Irish-interest sports: rugby, soccer, GAA (hurling & football), golf, and horse racing",
+    "Focus on weekend fixtures as the primary viewing window for fans",
+    "Display the TV channel or streaming service for each event clearly",
+    "Include clear on-page usage instructions so visitors can immediately understand how to use the tool",
+    "Ensure the tool works as a static file served at a path URL with no server-side dependencies"
+  ],
+  "stakeholders": [
+    {
+      "role": "Product Manager",
+      "responsibilities": [
+        "Define sport categories and data structure",
+        "Prioritise features and scope",
+        "Validate the final tool meets the directive"
+      ]
+    },
+    {
+      "role": "Developer",
+      "responsibilities": [
+        "Implement the single-page HTML/CSS/JS application",
+        "Structure sport schedule data within the static file",
+        "Ensure responsive design and cross-browser compatibility"
+      ]
+    },
+    {
+      "role": "End User (Irish Sports Fan)",
+      "responsibilities": [
+        "Consume the tool to find sport start times and channels",
+        "Provide feedback on usability and completeness"
+      ]
+    }
+  ],
+  "success_criteria": [
+    "The tool renders correctly as a single static HTML file opened in any modern browser",
+    "All five core sports (rugby, soccer, GAA, golf, horse racing) are represented with sample fixture data",
+    "Each fixture entry shows: sport, event/match name, date/time, and TV channel or streaming service",
+    "Weekend fixtures are prominently displayed or filterable",
+    "On-page usage instructions are visible and clear without requiring external documentation",
+    "The page is responsive and usable on both desktop and mobile devices",
+    "No external database, authentication, or server-side runtime is required"
+  ],
+  "constraints": [
+    "Must be a single self-contained HTML file (inline CSS and JS, no external dependencies)",
+    "No external database or authentication system",
+    "Must function as a static file served at a path URL",
+    "Budget capped at $0.50 USD",
+    "Delivery timeout of 300 seconds",
+    "Data is embedded/static (no live API integrations required in v1.0)"
+  ],
+  "assumptions": [
+    {
+      "assumption": "Live data feeds or API integrations are not required for the initial version",
+      "default": "Sport schedule data will be hardcoded as sample/representative fixtures within the HTML file"
+    },
+    {
+      "assumption": "The tool needs to support all modern browsers but not legacy ones",
+      "default": "Target latest versions of Chrome, Firefox, Safari, and Edge"
+    },
+    {
+      "assumption": "The scope of 'top sports' is limited to the five listed categories",
+      "default": "Rugby, soccer, GAA (hurling & football), golf, and horse racing"
+    },
+    {
+      "assumption": "Weekend is defined as Saturday and Sunday",
+      "default": "Fixtures shown default-filter to Saturday and Sunday"
+    },
+    {
+      "assumption": "No user accounts or personalisation features are needed",
+      "default": "All visitors see the same schedule view with client-side filtering only"
+    },
+    {
+      "assumption": "Time zone for all displayed times",
+      "default": "All times displayed in Irish Standard Time (IST/GMT)"
+    }
+  ]
+}

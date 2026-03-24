@@ -1,0 +1,171 @@
+{
+  "artifact_type": "task_plan",
+  "version": "1.0",
+  "title": "Implementation Plan: What Time's Throw In? - Irish Sports TV Guide",
+  "rationale": "This project requires building a single self-contained HTML file with embedded CSS/JS and static fixture data. The plan breaks work into data preparation, UI implementation, testing, and validation tasks. Given the single-file constraint and budget cap, the implementation is streamlined with minimal task overhead while ensuring all acceptance criteria are met.",
+  "tasks": [
+    {
+      "id": "plan-task-1",
+      "task_type": "prepare_data",
+      "objective": "Curate sample fixture data covering all five core Irish-interest sports (rugby, soccer, GAA hurling, GAA football, golf, horse racing). Each fixture must include: sport category, event/match name, date/time (focused on upcoming weekends), and TV channel or streaming service (e.g. RT\u00c9, TG4, Sky Sports, TNT Sports, Virgin Media, Premier Sports, Racing TV). Provide at least 3 fixtures per sport, totaling 15+ entries.",
+      "assigned_role": "pm",
+      "dependency_ids": [],
+      "priority": 1,
+      "constraints": {
+        "must_include_sports": [
+          "rugby",
+          "soccer",
+          "GAA hurling",
+          "GAA football",
+          "golf",
+          "horse racing"
+        ],
+        "min_fixtures_per_sport": 3,
+        "channels": [
+          "RT\u00c9",
+          "TG4",
+          "Sky Sports",
+          "TNT Sports",
+          "Virgin Media",
+          "Premier Sports",
+          "Racing TV",
+          "GAAGO"
+        ]
+      },
+      "artifact_targets": [
+        "fixture_dataset"
+      ]
+    },
+    {
+      "id": "plan-task-2",
+      "task_type": "implement_feature",
+      "objective": "Build the single self-contained HTML file with all inline CSS and JS. Implement the core layout: header with title 'What Time's Throw In?', on-page usage instructions section, fixture list/grid displaying sport, event name, date/time, and TV channel for each entry. Embed the curated fixture data as a JavaScript array. Ensure no external dependencies, imports, or API calls.",
+      "assigned_role": "engineering",
+      "dependency_ids": [
+        "plan-task-1"
+      ],
+      "priority": 2,
+      "constraints": {
+        "single_file": true,
+        "no_external_deps": true,
+        "no_api_calls": true,
+        "inline_css_js": true
+      },
+      "artifact_targets": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "plan-task-3",
+      "task_type": "implement_feature",
+      "objective": "Implement sport category filter buttons/tabs allowing users to filter fixtures by sport (All, Rugby, Soccer, GAA, Golf, Horse Racing). Add weekend filter toggle to prominently display or isolate weekend fixtures. Ensure filters are intuitive and clearly labeled.",
+      "assigned_role": "engineering",
+      "dependency_ids": [
+        "plan-task-2"
+      ],
+      "priority": 3,
+      "constraints": {},
+      "artifact_targets": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "plan-task-4",
+      "task_type": "implement_feature",
+      "objective": "Implement responsive design using inline CSS media queries. Ensure the page is fully usable on mobile (320px+), tablet, and desktop viewports. Use a card-based or table layout that adapts gracefully. Style with an Irish sports theme (green accents). Ensure TV channel/streaming service is visually prominent per fixture entry.",
+      "assigned_role": "engineering",
+      "dependency_ids": [
+        "plan-task-2"
+      ],
+      "priority": 3,
+      "constraints": {
+        "mobile_min_width": "320px",
+        "must_be_responsive": true
+      },
+      "artifact_targets": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "plan-task-5",
+      "task_type": "implement_feature",
+      "objective": "Add clear on-page usage instructions visible at the top of the page explaining how to use sport filters, weekend filter, and how to read fixture details. Instructions must not require scrolling past to see content and should be concise (2-4 sentences).",
+      "assigned_role": "engineering",
+      "dependency_ids": [
+        "plan-task-3"
+      ],
+      "priority": 4,
+      "constraints": {},
+      "artifact_targets": [
+        "implementation"
+      ]
+    },
+    {
+      "id": "plan-task-6",
+      "task_type": "write_tests",
+      "objective": "Validate the completed HTML file against all acceptance criteria: (1) opens correctly as a static file in a browser, (2) all five sports represented with fixture data, (3) each fixture shows sport/event/date-time/channel, (4) weekend fixtures are prominent or filterable, (5) responsive on mobile and desktop, (6) on-page instructions are visible, (7) no external dependencies or API calls, (8) single file with inline CSS/JS only.",
+      "assigned_role": "qa",
+      "dependency_ids": [
+        "plan-task-5"
+      ],
+      "priority": 5,
+      "constraints": {},
+      "artifact_targets": [
+        "test_results"
+      ]
+    },
+    {
+      "id": "plan-task-7",
+      "task_type": "review",
+      "objective": "Final review of the delivered HTML file. Verify file size is reasonable, all fixture data is accurate and realistic for Irish sports broadcasting, the page loads instantly with no errors in browser console, and all project charter success criteria are satisfied. Approve for delivery.",
+      "assigned_role": "pm",
+      "dependency_ids": [
+        "plan-task-6"
+      ],
+      "priority": 6,
+      "constraints": {
+        "budget_remaining_check": true
+      },
+      "artifact_targets": [
+        "approval"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "from_id": "plan-task-1",
+      "to_id": "plan-task-2",
+      "type": "blocks"
+    },
+    {
+      "from_id": "plan-task-2",
+      "to_id": "plan-task-3",
+      "type": "blocks"
+    },
+    {
+      "from_id": "plan-task-2",
+      "to_id": "plan-task-4",
+      "type": "blocks"
+    },
+    {
+      "from_id": "plan-task-3",
+      "to_id": "plan-task-5",
+      "type": "blocks"
+    },
+    {
+      "from_id": "plan-task-5",
+      "to_id": "plan-task-6",
+      "type": "blocks"
+    },
+    {
+      "from_id": "plan-task-4",
+      "to_id": "plan-task-6",
+      "type": "blocks"
+    },
+    {
+      "from_id": "plan-task-6",
+      "to_id": "plan-task-7",
+      "type": "blocks"
+    }
+  ]
+}

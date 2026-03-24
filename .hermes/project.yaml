@@ -1,0 +1,24 @@
+created_at: '2026-03-24T09:00:02.103557+00:00'
+directive: 'Build a web tool: What time''s Throw in?
+
+
+  Ireland is a nation of sports crazy fans. There are numerous different types of
+  sport available to watch on TV - rugby, soccer, golf, GAA, horse racing. It is difficult
+  to collate all these different sport start times and the television channel (or
+  more recently - streaming service) they are available on. The key times are weekend.
+  Build a website that shows the start times and the channel for the top sports.
+
+
+  Requirements:
+
+  - Single-page web tool, self-contained HTML/CSS/JS
+
+  - No external database or auth required
+
+  - Must work as a static file served at a path URL
+
+  - Include clear usage instructions on the page'
+name: What time's Throw in?
+phase: CREATED
+project_id: 01KMFH52NPTPE6GJRHH7YZY9NF
+requestor_email: hermes-org@agentmail.to

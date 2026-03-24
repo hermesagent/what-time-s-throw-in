@@ -1,0 +1,125 @@
+{
+  "artifact_type": "ux_spec",
+  "version": "1.0",
+  "target_users": [
+    {
+      "name": "Weekend Sports Fan",
+      "description": "A casual Irish sports enthusiast who wants to quickly find out what's on TV this weekend. They check on their phone (often on the couch) or desktop. Not particularly tech-savvy \u2014 they just want answers fast.",
+      "goals": [
+        "Find out what sport is on TV this Saturday/Sunday",
+        "Know the exact start time in Irish time",
+        "Know which channel or streaming service to tune into",
+        "Quickly scan across multiple sports without clicking through multiple sites"
+      ],
+      "pain_points": [
+        "Information scattered across RT\u00c9, Sky, Virgin Media, and streaming apps",
+        "TV guides are cluttered with non-sport content",
+        "Hard to compare across sports at a glance",
+        "Mobile-unfriendly sports listing sites"
+      ]
+    },
+    {
+      "name": "Sport-Specific Fan",
+      "description": "A fan who follows one or two sports closely (e.g., GAA and rugby). They want to filter down to just their sport and ignore the rest.",
+      "goals": [
+        "Filter fixtures to only the sports they care about",
+        "See all upcoming matches for their sport in one view",
+        "Quickly identify marquee fixtures (e.g., All-Ireland, Six Nations)"
+      ],
+      "pain_points": [
+        "Generic sports pages bury their sport under soccer headlines",
+        "No single place that covers GAA, rugby, and horse racing equally",
+        "Filtering is often absent or broken on mobile"
+      ]
+    },
+    {
+      "name": "Group Planner",
+      "description": "Someone organising a viewing session with friends or family. They need to see the full weekend schedule to plan around multiple events.",
+      "goals": [
+        "See the full weekend timeline at a glance",
+        "Identify clashes between fixtures on different channels",
+        "Share or screenshot the schedule easily"
+      ],
+      "pain_points": [
+        "Hard to see temporal overlaps across sports",
+        "Need to cross-reference multiple sources to build a plan"
+      ]
+    }
+  ],
+  "key_flows": [
+    {
+      "name": "Default Weekend View",
+      "steps": [
+        "User opens the HTML file in their browser",
+        "Page loads with weekend fixtures (Saturday & Sunday) displayed by default",
+        "Fixtures are grouped by day, sorted chronologically",
+        "Each fixture card shows: sport icon/label, event name, date/time (IST), and TV channel/streaming service",
+        "On-page instructions banner is visible at the top explaining how to use filters"
+      ],
+      "notes": "This is the zero-click experience. The most common use case should require no interaction at all."
+    },
+    {
+      "name": "Filter by Sport",
+      "steps": [
+        "User sees sport filter buttons/pills (Rugby, Soccer, GAA, Golf, Horse Racing) near the top",
+        "User taps/clicks one or more sport filters to toggle them on/off",
+        "Fixture list updates instantly (client-side) to show only selected sports",
+        "An 'All Sports' option resets filters",
+        "Active filters are visually highlighted"
+      ],
+      "notes": "Filtering must be instant with no page reload. Toggle behavior (not dropdown) is preferred for discoverability and speed."
+    },
+    {
+      "name": "Filter by Day",
+      "steps": [
+        "User sees day filter options (Saturday, Sunday, or All Weekend)",
+        "User selects a day to narrow the fixture list",
+        "List updates immediately to show only that day's fixtures"
+      ],
+      "notes": "Day filter works in combination with sport filter. Both filters are independently toggleable."
+    },
+    {
+      "name": "View Fixture Details",
+      "steps": [
+        "User scans the fixture list",
+        "Each entry clearly displays sport type, match/event name, kick-off/start time, and broadcast channel",
+        "Channel names use recognisable branding (e.g., RT\u00c9 2, Sky Sports, GAAGO, Virgin Media, Racing TV)"
+      ],
+      "notes": "No expand/collapse or detail modals needed in v1.0. All info is visible inline on each card."
+    },
+    {
+      "name": "Mobile Browse",
+      "steps": [
+        "User opens the page on a mobile browser",
+        "Layout adapts to single-column card view",
+        "Filters stack horizontally and scroll if needed",
+        "Fixture cards are full-width and thumb-friendly",
+        "All text remains readable without zooming"
+      ],
+      "notes": "Mobile is likely the primary device. Touch targets must be at least 44px."
+    }
+  ],
+  "ui_patterns": [
+    "Card-based fixture layout: each fixture is a discrete card with sport label, event name, time, and channel",
+    "Pill/chip filter buttons for sport categories \u2014 visually distinct, toggle on/off with active state colour",
+    "Day selector as segmented control (Saturday | Sunday | All Weekend) above the fixture list",
+    "Chronological grouping with sticky day headers (e.g., 'Saturday 28 March') that persist while scrolling",
+    "Sport colour coding: assign a distinct accent colour to each sport (e.g., green for GAA, blue for rugby) for instant visual scanning",
+    "Channel/service badge: display broadcast info as a styled badge/tag within each card for quick recognition",
+    "Instruction banner: a subtle, dismissable help section at the top of the page explaining filters and layout",
+    "Empty state: if filters result in no fixtures, show a friendly message like 'No fixtures match your filters \u2014 try selecting more sports'",
+    "Single-column layout on mobile, two-column grid on tablet, three-column on desktop",
+    "No modals, no navigation \u2014 everything is on one scrollable page"
+  ],
+  "accessibility_requirements": [
+    "All interactive elements (filter buttons, links) are keyboard-navigable with visible focus indicators",
+    "Filter toggle state is conveyed via aria-pressed attribute on buttons",
+    "Sport colour coding is supplemented with text labels and icons \u2014 never colour-alone to convey meaning",
+    "Sufficient colour contrast ratios (WCAG 2.1 AA minimum: 4.5:1 for text, 3:1 for UI components)",
+    "Semantic HTML: use heading hierarchy (h1 for page title, h2 for day groups), lists or grid roles for fixture collections",
+    "Screen reader announcements when filter results update (aria-live region on the fixture list)",
+    "Touch targets minimum 44\u00d744px on mobile",
+    "Readable default font size (minimum 16px body text) with no reliance on browser zoom"
+  ],
+  "designer_notes": "This is a simple, single-purpose tool \u2014 resist feature creep. The design should feel like a clean sports schedule poster, not a web app. Key principles: (1) Zero-click value \u2014 the default view should answer 'what's on this weekend?' immediately. (2) Scannability \u2014 users will visually scan, not read; use colour, typography hierarchy, and whitespace to make sport/time/channel pop. (3) Mobile-first \u2014 assume most users are on phones, design the card layout for 375px width first, then scale up. (4) Irish context \u2014 use familiar channel names (RT\u00c9, TG4, Sky Sports, Virgin Media, GAAGO, Racing TV) and sport terminology ('throw-in' not 'kick-off' for GAA). (5) Static data \u2014 since fixtures are hardcoded, include a visible 'Last updated' date so users know the data freshness. (6) The colour palette should feel sporty and energetic but not garish \u2014 consider a dark header with white/light card backgrounds. Green accents nod to Ireland without being heavy-handed. (7) All CSS and JS must be inline in the single HTML file \u2014 no CDN links, no external fonts. Use system font stack (e.g., -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif) for zero-load-time typography."
+}

@@ -1,0 +1,13 @@
+{
+  "artifact_type": "persona_selection",
+  "version": "1.0",
+  "selected_personas": [
+    "domain_researcher",
+    "ux_designer"
+  ],
+  "rationale": {
+    "domain_researcher": "Brief requires knowledge of Irish sports landscape (GAA, rugby, soccer, racing), Irish TV channels (RT\u00c9, TG4, Virgin Media), and streaming services (GAAGO, NOW TV) to populate accurate schedule data.",
+    "ux_designer": "Primary users are Irish sports fans \u2014 a non-developer audience who need a quick, scannable weekend schedule with clear channel/time info on any device."
+  },
+  "coordinator_notes": "Tight budget \u2014 this is a simple self-contained static HTML/CSS/JS page with hardcoded sample schedule data. No auth, no database, no build step. Domain researcher should focus on realistic Irish sports/channel pairings. UX designer should keep it to one clean responsive view with filtering by sport type. Developer delivers a single index.html file."
+}

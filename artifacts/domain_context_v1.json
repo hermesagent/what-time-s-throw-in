@@ -1,0 +1,49 @@
+{
+  "artifact_type": "domain_context",
+  "version": "1.0",
+  "domain": "Irish sports broadcasting and TV listings",
+  "key_findings": [
+    "Ireland has 5 major sport categories dominating weekend TV: GAA (hurling & football), rugby (Six Nations, URC, Champions Cup), soccer (Premier League, League of Ireland, Champions League), horse racing (Cheltenham, Irish festivals), and golf (Ryder Cup, majors)",
+    "Weekend scheduling is the critical window \u2014 Saturday 12:30\u201322:00 and Sunday 13:00\u201318:00 are peak sports viewing times",
+    "GAA All-Ireland Championship matches (hurling & football) run May\u2013September and are the most-watched domestic sporting events",
+    "Broadcast rights are fragmented across free-to-air (RT\u00c9, TG4, Virgin Media) and pay/streaming (Sky Sports, TNT Sports, Premier Sports, DAZN, NOW TV, GAA GO)",
+    "RT\u00c9 holds free-to-air rights for major GAA championship matches and Six Nations rugby \u2014 these are protected 'listed events' under Irish law",
+    "TG4 broadcasts a significant number of GAA matches with Irish-language commentary",
+    "Premier League kick-off times are staggered: 12:30, 15:00 (blackout \u2014 not televised in UK/Ireland), 17:30 Saturday; 14:00, 16:30 Sunday",
+    "The 3pm Saturday blackout rule means no live Premier League games are shown between 14:45\u201317:15 on Saturdays in Ireland and UK",
+    "Horse racing fixtures are frequent (weekends year-round) and split between RT\u00c9, Racing TV, and Sky Sports Racing",
+    "Users expect times in Irish time (GMT in winter / IST i.e. GMT+1 in summer) \u2014 daylight saving transitions matter"
+  ],
+  "market_context": "No single dominant Irish sports TV guide exists. RT\u00c9 Sport, the42.ie, and OffsideRule.com publish partial weekend schedules. Sky and Virgin Media list only their own channels. Most fans rely on social media, WhatsApp groups, or manually checking multiple broadcaster sites. A consolidated single-page weekend view is a genuine gap.",
+  "regulations": [
+    "Broadcasting Act 2009 (Section 162): Designated 'events of major importance' must be available on free-to-air TV (e.g., All-Ireland finals, Six Nations home matches, FIFA World Cup)",
+    "The 'closed period' / 3pm blackout rule: No live coverage of football matches on Saturday between 14:45 and 17:15 (Article 48 of the UEFA/FA regulations, enforced in Ireland)",
+    "Copyright: Listing broadcast times and channel names is factual data and not subject to copyright, but rebroadcasting logos or streams would be",
+    "GDPR is not relevant as no user data is collected in a static listings tool"
+  ],
+  "terminology": {
+    "GAA": "Gaelic Athletic Association \u2014 governs hurling, Gaelic football, camogie, and handball",
+    "Throw-in": "The start of a GAA match (equivalent to 'kick-off' in soccer)",
+    "Puck-out": "Restart in hurling after a score",
+    "TG4": "Irish-language free-to-air TV channel, major GAA broadcaster",
+    "RT\u00c9": "Raidi\u00f3 Teilif\u00eds \u00c9ireann \u2014 Ireland's national public broadcaster",
+    "URC": "United Rugby Championship \u2014 cross-nation club rugby league featuring Irish provinces",
+    "Listed events": "Sporting events legally required to be broadcast on free-to-air television",
+    "NOW TV": "Sky's streaming-only service, common way Irish viewers access Sky Sports without a dish",
+    "GAA GO": "GAA's own streaming platform for live and on-demand GAA matches (subscription)",
+    "Virgin Media Sport": "Irish pay-TV sports channels (Champions League, La Liga rights)"
+  },
+  "key_players": [
+    "RT\u00c9 Sport (free-to-air: GAA, Six Nations, horse racing, Olympics)",
+    "TG4 (free-to-air: GAA matches in Irish language)",
+    "Sky Sports / NOW TV (Premier League, GAA, golf majors, F1)",
+    "Virgin Media Sport (Champions League, Europa League)",
+    "TNT Sports (formerly BT Sport \u2014 Champions League, URC rugby)",
+    "Premier Sports (URC, Serie A, Scottish football)",
+    "DAZN (emerging player, some boxing/MMA rights)",
+    "GAA GO (GAA's own streaming platform)",
+    "Racing TV (dedicated horse racing channel)",
+    "the42.ie (Irish sports media \u2014 publishes weekend TV schedules editorially)"
+  ],
+  "researcher_notes": "The tool name 'What time's Throw-in?' cleverly uses GAA terminology, appealing to Irish sports culture. Key build considerations: (1) Since there's no database, sport fixture data will need to be hardcoded or structured as a JSON blob within the HTML \u2014 consider making it easy to update weekly. (2) Time display must respect Irish time (GMT/IST) and ideally auto-detect user timezone. (3) The 3pm Saturday blackout is a common source of confusion \u2014 calling it out in the UI would add value. (4) Channel logos would enhance UX but may have trademark issues \u2014 use text labels instead. (5) Weekend-focused layout should default to 'this weekend' view with Saturday and Sunday as primary columns. (6) Mobile-first design is important \u2014 fans check on phones."
+}
